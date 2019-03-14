@@ -1,0 +1,52 @@
+<div class="container">
+  <h1>Insert Annuncio Form</h1>
+  <form (ngSubmit)="save()" class="annuncioForm" #insertAnnuncioForm="ngForm" >
+    
+    <div class="form-group">
+      <label for="testoAnnuncio">Testo Annuncio</label>
+      <input type="text" class="form-control" id="testoAnnuncio" required 
+      [(ngModel)]="model.testoAnnuncio" name="testoAnnuncio">
+    </div>
+
+    <div class="form-group">
+      <label for="category">Categoria:</label>
+      <div *ngFor="let cat of category ;let i=index">
+          <label>
+              <input type="checkbox"
+                     name="{{ 'cat'+i }}"
+                     id="{{ 'cat'+i }}"
+                     [(ngModel)]="model.category[i]"
+                    />
+              {{cat.nome}}
+          </label>
+      </div>
+  </div>
+    
+  <!--     <div class="form-group">
+        <label for="category">Seleziona Categoria:</label>        
+            <input *ngFor="let cat of category" type="checkbox" id="category" name="category"
+            [(ngModel)]="model.category"
+              [value]="cat">{{cat.nome}}<br>
+      </div> -->
+
+<!--     <div class="form-group">
+      <label for="power">Hero Power</label>
+      <select class="form-control" id="power" required>
+        <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+      </select>
+    </div> -->
+
+    <div class="form-group">
+      <label for="prezzo">Prezzo</label>
+      <input type="number" class="form-control" id="prezzo" required 
+      [(ngModel)]="model.prezzo" name="prezzo">
+    </div>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+
+  </form>
+</div>
+
+<hr>
+
+{{model | json}}
