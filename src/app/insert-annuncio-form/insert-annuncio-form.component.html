@@ -1,3 +1,18 @@
+<h1>REACTIVE FORM</h1><br><br>
+
+<form [formGroup]="categoryForm" (ngSubmit)="save()">
+  <label formArrayName="category" *ngFor="let nome of categoryForm.controls.category.controls; let i = index">
+    <input type="checkbox" [formControlName]="i">
+    {{category[i].nome}}
+  </label>
+
+  <button>submit</button>
+</form>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
 <div class="container">
   <h1>Insert Annuncio Form</h1>
   <form (ngSubmit)="save()" class="annuncioForm" #insertAnnuncioForm="ngForm" >
@@ -13,7 +28,7 @@
       <div *ngFor="let cat of category ;let i=index">
           <label>
               <input type="checkbox"
-                     name="{{ 'cat'+i }}"
+                     name="{{ 'cat'+ i }}"
                      id="{{ 'cat'+i }}"
                      [(ngModel)]="model.category[i]"
                     />
